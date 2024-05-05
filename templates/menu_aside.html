@@ -1,0 +1,22 @@
+{% load static %}
+{% load i18n %}
+{% load i18n %}
+
+
+
+<a href="{% url "padron_search" %}" class="brand-link"><img src='{% static "images/favicon.png" %}' alt="Ministerio de salud Logo" class="brand-image img-circle elevation-3" style="opacity: .8"><span style="font-size:17.5px" class="brand-text font-weight-light">Ministerio de Salud</span></a>
+
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column nav-legacy nav-flat" data-widget="treeview" role="menu" data-accordion="true">
+            {% if request.user.profile.usuario.persona %}
+            {% include "menu_sistema.html" %}
+            {% endif %}
+
+        </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+</div>
+  <!-- /.sidebar -->

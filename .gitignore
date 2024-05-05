@@ -1,0 +1,29 @@
+# use glob syntax.
+syntax: glob
+
+.metadata
+.coverage
+.ropeproject
+.settings
+.project
+CACHE
+media
+logs
+_build
+__pycache__
+*.bak
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.rdb
+*.swp
+*.log
+*~
+*.orig
+*.tmp
+local.py
+static
+staticfiles
+.env
+

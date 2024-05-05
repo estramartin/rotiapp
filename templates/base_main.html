@@ -1,0 +1,40 @@
+{% extends "base_site.html" %}
+
+{% load static %}
+{% block css %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href={% static "css/menu-accordion.css" %} media="screen"/>
+    <link rel="stylesheet" type="text/css" href={% static "lib/adminLTE-3.2/plugins/datatables/css/jquery.dataTables.css" %} media="screen"/>
+    <link rel="stylesheet" href={% static "lib/adminLTE-3.2/plugins/datepicker/datepicker3.css"%} media="screen">
+    
+
+{% endblock css %}
+
+{% block script %}
+    {{ block.super  }}
+    <script type="text/javascript" src={% static "lib/adminLTE-3.2/plugins/datatables/jquery.dataTables.js" %} defer></script>
+    <script type="text/javascript" src={% static "lib/adminLTE-3.2/plugins/datatables-bs5/js/dataTables.bootstrap5.js" %} defer></script>
+{% endblock script %}
+
+{% block javascript %}
+    {{ block.super }}
+{% endblock javascript %}
+
+
+{% block breadcrumbs %}
+	{% block breadcrumb %}
+		
+		<strong>Usted esta aquí </strong> <span class="fas fa-chevron-right d-flex ml-1 mr-1 align-items-center justify-content-center"></span>
+	{% endblock %}
+
+	
+{% endblock %}
+
+
+{% block content_header %}
+{{ block.super }}
+{% endblock content_header %}
+
+{% block content_body %}
+  {{ block.super }}
+{% endblock content_body %}

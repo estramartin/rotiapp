@@ -1,0 +1,10 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block branding %}
+<h1 id="site-name">
+    <a href="{% url 'admin:index' %}">
+        <img src={% static 'images/favicon.png' %} alt="Roti Gestión" style="height: 200px;">
+    </a>
+</h1>
+{% endblock %}

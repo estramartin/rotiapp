@@ -1,0 +1,26 @@
+{% extends "base_main.html" %}
+
+
+{% block title %}
+    No tiene permisos
+{% endblock title %}
+
+{% block breadcrumb %}
+    {{ block.super }}    
+    {% add_crumb 'Sin permisos' 'main_planillas' %}
+{% endblock %}
+
+{% block content_body %}
+ <div class="col-md-6 col-sm-10 col-xs-12">
+    <div class="small-box bg-red">
+        <div class="inner">
+          <h2><i class="fa fa-meh-o"> </i> Oops!</h2>
+          <p>No tiene permisos para realizar esta acción.</p>
+        </div>
+        <div class="icon">
+          <i class="fa fa-exclamation-circle "></i>
+        </div>
+        <a href='{% url "padron_search" %}' class="small-box-footer"><i class="fa fa-arrow-circle-left"></i> Volver al Inicio</a>
+    </div>
+</div>
+{% endblock content_body %}

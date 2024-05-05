@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}
+{{ block.super }}
+
+{% endblock css %}
+
+{% block script %}
+    {{ block.super }} 
+   <script src={% static "lib/adminLTE-3.2/plugins/pace-progress/pace.js" %} defer></script>
+{% endblock %}
+
+{% block main_header %}
+     {% include "menu_top.html" %}
+{% endblock main_header %}
+
+
+{% block container %}
+<div class="content" style="overflow-x:hidden;overflow-y:auto;">
+  <!-- Content Header (Page header) -->
+  <section class="content-header content-header-constrained">
+  {% block content_header %}
+      <ol class="breadcrumb d-flex text-sm float-sm-right" hidden>
+      {% block breadcrumbs %}
+      {% endblock breadcrumbs %}
+      </ol>
+      <br>
+  {% endblock content_header %}
+  {% if messages %}
+    <section class="messages">
+        {% for message in messages %}
+        <div {% if message.tags %} class="alert alert-success alert-dismissible {{ message.tags }}"{% endif %}>
+            <button class="close" type="button" data-dismiss="alert" aria-hidden="true">×</button>
+            {{ message }}
+        </div>
+        {% endfor %}
+    </section>
+  {% endif %}
+
+  </section>
+  <div class="d-lg-flex w-100 newTurnera">
+    <section class="menu-left col-sm-12 col-md-12 col-lg-2 mb-4">
+      <div class="card-group col-sm-12 flex-column mt-0 mb-0" style="gap: 7px" id="menu-left" role="tablist" aria-multiselectable="true">
+        {% if user.is_authenticated %}
+          {% block menu_left %}
+
+          {% endblock menu_left %}
+        {% endif %}
+      </div>
+    </section>
+    <!-- Main content -->
+    <section class="content_body col-md-12 col-lg-10 col-sm-12">
+        <div id="alert-errors" class="alert alert-danger alert-dismissible" role="alert" hidden>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <div id="errors"></div>
+        </div>
+        <div id="notification" class="alert alert-info alert-dismissable" hidden>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <p></p>
+        </div>
+        {% block content_body %}
+        {% endblock content_body %}
+        <!-- Modal change efector -->
+ 
+    </section>
+  </div>
+  <!-- /.content -->
+</div>
+{% endblock container %}
