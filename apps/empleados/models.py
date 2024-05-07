@@ -20,7 +20,7 @@ class Categoria(models.Model):
     descripcion = models.TextField()
     valor_hora = models.DecimalField(max_digits=10, decimal_places=2)
     valor_antiguedad = models.DecimalField(max_digits=10, decimal_places=2)
-    aportes = models.DecimalField(max_digits=10, decimal_places=2)
+    aportes = models.DecimalField(max_digits=10, decimal_places=2, default=0.19)
 
     def __str__(self):
         return self.nombre

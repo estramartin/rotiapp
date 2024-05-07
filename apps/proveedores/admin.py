@@ -8,10 +8,10 @@ from apps.personas.admin import PersonaAdmin
 
 class InsumoProveedorInline(admin.TabularInline):
     model = InsumoProveedor
-    extra = 1
     autocomplete_fields = ['insumo']
-    readonly_fields = ['unidad_medida']
+    readonly_fields = ['unidad_medida','notificado']
     raw_id_fields = ['insumo']
+    extra = 1
 
 
 class ProveedorAdmin(PersonaAdmin):

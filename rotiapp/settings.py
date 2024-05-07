@@ -48,7 +48,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'compressor',
+    'celery',
+    'dal',
+    'dal_select2',
 ]
 
 APPS = [
@@ -59,6 +63,7 @@ APPS = [
     'apps.personas',
     'apps.ventas',
     'apps.proveedores',
+    'apps.agendas',
 ]
 
 INSTALLED_APPS += APPS
@@ -181,7 +186,28 @@ TEMPLATES = [
     },
 ]
 
+DEFAULT_FROM_EMAIL = env.str('DEFAULT_FROM_EMAIL', 'estramartin@gmail.com')
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'estramartin@gmail.com'
+EMAIL_HOST_PASSWORD = 'cnqekwonpxknxfon'
+EMAIL_USE_TLS = True
+
 # JAZZMIN_SETTINGS = {
 #     "login_logo": 'images/favicon.png',
 #     "user_css": ['css/roti.css'],
 # }
+
+
+# CELERY
+CELERY_ENABLED = True
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+CELERY_TIMEZONE = 'America/Argentina/Buenos_Aires'
+CELERY_SEND_TASK_ERROR_EMAILS = True
+CELERY_ACCEPT_CONTENT = ['pickle']
+CELERY_TASK_SERIALIZER = 'pickle'
+CELERY_RESULT_SERIALIZER = 'pickle'
+
+VENTA_MSG_TIMEOUT = 10

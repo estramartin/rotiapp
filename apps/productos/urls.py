@@ -1,11 +1,6 @@
-
-
 from django.urls import path
-from . import views
-
+from .views import ViandaAutocomplete
 
 urlpatterns = [
-    path('main/', views.main, name='main'),
-    #path('localidad/codigo_postal/search/', views.search_localidad_codigo_postal, name='localidad_codigo_postal_search'),
-    #path('municipio/search/', views.search_municipio, name='municipio_search'),
+    path('vianda-autocomplete/', ViandaAutocomplete.as_view(), name='vianda-autocomplete'),
 ]

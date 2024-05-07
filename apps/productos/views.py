@@ -1,12 +1,8 @@
-from django.shortcuts import render
-from apps.productos.models import Producto
-# Create your views here.
+from django.contrib.admin.views.autocomplete import AutocompleteJsonView
+from django.utils import timezone
 
-
-def main(request):
-    template = 'public_html/index.html'
-    productos = Producto.objects.all()
-    context = {
-        'productos': productos
-    }
-    return render(request, template, context)
+class ViandaAutocomplete(AutocompleteJsonView):
+    def get_queryset(self):        
+        qs = super().get_queryset()        
+        today = timezone.now().date()
+        return qs.filter(agenda__fechas__fecha=today)

@@ -1,3 +1,4 @@
+from django.utils import timezone
 from django.contrib import admin
 from django.urls import reverse
 from django.utils.html import format_html, format_html_join
@@ -9,6 +10,9 @@ from .models import (
     Categoria,
     Promocion,
     PromocionProducto,
+    Vianda,
+    ViandaProducto,
+    Agenda,
     )
 
 
@@ -40,11 +44,13 @@ class ProductoAdmin(admin.ModelAdmin):
         if obj.promociones.exists():
             links = []
             for promocion in obj.promociones.all():
-                url = reverse("admin:productos_promocion_change", args=[promocion.promocion.pk])  # Genera la URL para la página de edición de la promoción
-                links.append(format_html('<a href="{}"><span style="">&#10004; {}</span></a>', url, promocion.promocion.nombre))  # tick verde y nombre de la promoción como enlace
+                if promocion.promocion.activo:
+                    url = reverse("admin:productos_promocion_change", args=[promocion.promocion.pk])  # Genera la URL para la página de edición de la promoción
+                    links.append(format_html('<a href="{}"><span style="">&#10004; {}</span></a>', url, promocion.promocion.nombre))  # tick verde y nombre de la promoción como enlace
             return format_html_join(', ', '{}', ((link,) for link in links))  # Une todos los enlaces con comas
         else:
             return format_html('<span style="color:red;">&#10008;</span>')  # x roja
+    # get_precio_venta.boolean = True
     get_precio_venta.short_description = 'En promoción'
 
 
@@ -75,6 +81,27 @@ class PromocionAdmin(admin.ModelAdmin):
     inlines = [PromocionProductoInline]
 
 
+class ViandaProductoInline(admin.TabularInline):
+    model = ViandaProducto
+    extra = 1
+
+
+class ViandaAdmin(admin.ModelAdmin):
+    inlines = [ViandaProductoInline]
+    list_display = ('nombre', 'precio_venta_real', 'precio_venta', 'activo')
+    search_fields = ('nombre',)
+    list_filter = ('activo',)
+
+    def get_search_results(self, request, queryset, search_term):
+        queryset, use_distinct = super().get_search_results(request, queryset, search_term)
+               
+        if 'autocomplete' in request.path:
+            today = timezone.now().date()
+            queryset = queryset.filter(agenda__fechas__fecha=today)
+        return queryset, use_distinct
+
+
 admin.site.register(Producto, ProductoAdmin)
 admin.site.register(Categoria, CategoriaAdmin)
 admin.site.register(Promocion, PromocionAdmin)
+admin.site.register(Vianda, ViandaAdmin)
