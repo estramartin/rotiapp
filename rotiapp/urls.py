@@ -53,7 +53,7 @@ handler500 = 'rest_framework.exceptions.server_error'
 handler400 = 'rest_framework.exceptions.bad_request'
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('', admin.site.urls),
     path('docs/', schema_view.with_ui('swagger',
          cache_timeout=0), name='schema-swagger-ui'),
     path('redocs/', schema_view.with_ui('redoc',

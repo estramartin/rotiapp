@@ -24,10 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-&oo#kt!7#s6-c4=zj)k8g*e_j^kfj0o-^+*hy-q*v#ikwi@isi'
+SECRET_KEY = env.str('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool('DEBUG')
 
 POSTGRESQL_HOST = env.str('POSTGRESQL_HOST')
 POSTGRESQL_PORT = env.int('POSTGRESQL_PORT', default=5432)
@@ -205,13 +205,13 @@ TEMPLATES = [
     },
 ]
 
-DEFAULT_FROM_EMAIL = env.str('DEFAULT_FROM_EMAIL', 'estramartin@gmail.com')
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'estramartin@gmail.com'
-EMAIL_HOST_PASSWORD = 'cnqekwonpxknxfon'
-EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = env.str('DEFAULT_FROM_EMAIL')
+EMAIL_BACKEND = env.str('EMAIL_BACKEND')
+EMAIL_HOST = env.str('EMAIL_HOST')
+EMAIL_PORT = env.int('EMAIL_PORT')
+EMAIL_HOST_USER = env.str('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env.str('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = env.bool('EMAIL_USE_TLS')
 
 # JAZZMIN_SETTINGS = {
 #     "login_logo": 'images/favicon.png',
