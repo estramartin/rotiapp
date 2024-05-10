@@ -16,7 +16,7 @@ from datetime import timedelta
 from pathlib import Path
 env = environ.Env()
 
-ROOT_DIR = environ.Path(__file__) - 1
+ROOT_DIR = environ.Path(__file__) - 2
 
 READ_DOT_ENV_FILE = env.bool('DJANGO_READ_DOT_ENV_FILE', default=True)
 if READ_DOT_ENV_FILE:
@@ -45,7 +45,9 @@ POSTGRESQL_PORT = env.int('POSTGRESQL_PORT', default=5432)
 POSTGRESQL_USER = env.str('POSTGRESQL_USER')
 POSTGRESQL_PASSWORD = env.str('POSTGRESQL_PASSWORD')
 POSTGRESQL_DATABASE = env.str('POSTGRESQL_DATABASE')
-GDAL_LIBRARY_PATH = '/usr/lib/libgdal.so.26.0.4'
+
+if DEBUG:
+    GDAL_LIBRARY_PATH = '/usr/lib/libgdal.so.26.0.4'
 
 ALLOWED_HOSTS = []
 
