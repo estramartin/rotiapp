@@ -20,9 +20,7 @@ class ProveedorAdmin(PersonaAdmin):
     list_filter = ['razon_social',]
     search_fields = ['razon_social',]
     list_per_page = 50
-    inlines = [
-        InsumoProveedorInline,
-    ]
+    inlines = PersonaAdmin.inlines + [InsumoProveedorInline]
 
 
 admin.site.register(Proveedor, ProveedorAdmin)

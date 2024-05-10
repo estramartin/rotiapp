@@ -94,7 +94,7 @@ class ViandaAdmin(admin.ModelAdmin):
 
     def get_search_results(self, request, queryset, search_term):
         queryset, use_distinct = super().get_search_results(request, queryset, search_term)
-               
+        print(request.path)
         if 'autocomplete' in request.path:
             today = timezone.now().date()
             queryset = queryset.filter(agenda__fechas__fecha=today)

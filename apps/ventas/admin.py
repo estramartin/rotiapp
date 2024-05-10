@@ -1,7 +1,3 @@
-from datetime import date
-from apps.agendas.models import Agenda
-from apps.productos.models import Vianda
-from django.contrib.admin.widgets import AutocompleteSelect
 from django.contrib import admin
 from .models import Venta, VentaProducto, VentaPromocion, VentaVianda
 
