@@ -23,7 +23,6 @@ __pycache__
 *.orig
 *.tmp
 local.py
-static
 staticfiles
 .env
 

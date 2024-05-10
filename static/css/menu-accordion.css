@@ -1,0 +1,93 @@
+/*    Menu acordeon  */
+
+.capt,
+.capb {
+    background: url(/static/images/caps.gif) no-repeat;
+    height:4px;
+    width:100%;
+    z-index:100;
+    margin:0px;
+    padding:0px;
+}
+.capt {
+    position:absolute;
+    background-position:0 -4px;
+}
+.capb {
+    margin-top:-19px;
+}
+
+.drawers-wrapper {
+    position: relative;
+    top: 20px;
+    left: 5px;
+    width: 215px;
+    float: left;
+}
+.drawers {
+    margin-bottom:15px;
+    color:#76797C;
+    font-size:11px;
+    line-height: 18px;
+    list-style: none;
+}
+.drawers a {
+        color:#666666;
+        text-decoration:none;
+        font-family:"Lucida Grande",Geneva,Arial,Verdana,sans-serif;
+}
+.drawer {
+   /*background:transparent url(/static/images/sideboxlight_bg.gif) repeat-y scroll 0pt;*/
+    color:#76797C;
+    font-size:11px;
+    line-height:1.3em;
+}
+.drawer ul {
+        padding: 0 12px;
+        padding-bottom:0pt;
+        list-style: none;
+ }
+.drawer li {
+    border-bottom:1px solid #E5E5E5;
+    line-height:16px;
+    padding:6px 0pt;
+    color: rgb(102, 102, 102);
+}
+.drawer a {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.drawer-handle {
+	background:#C3D9FF no-repeat scroll 0pt;
+    /*background:#C3D9FF url(/static/images/img20.jpg) no-repeat scroll 0pt;*/
+    color:#333333;
+    /*color: #3E3E3E;*/
+    cursor:default;
+    height:25px;
+    line-height:25px;
+    text-indent:15px;
+    font-size:12px;
+    font-weight: bolder;
+    /*width:100%;*/
+}
+.drawer-handle.open {
+    background-color:#72839D;
+    background-position:-188px 0pt;
+    color:#FFFFFF;
+    /*color: #3E3E3E;*/
+}
+
+/* nasty, but it fixes the indent on the first one. */
+h2.drawer-handle span {
+
+}
+.drawer-content ul {
+    padding-top: 7px;
+}
+.drawer-content li a {
+    display:block;
+    overflow:hidden;
+}
+
+

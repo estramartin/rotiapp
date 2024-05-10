@@ -1,0 +1,65 @@
+
+.login-header-bar {
+    background: none repeat scroll 0 0 #F1F1F1;
+    border-bottom: 1px solid #E5E5E5;
+    height: 90px;
+    overflow: hidden;
+}
+
+.header .logo {
+    float: left;
+    margin: 5px 16px 0;
+}
+
+.content {
+    padding-top: 8px;
+}
+
+.login-footer-bar {
+    background-color: #FFFFFF;
+    border-top: 1px solid #EBEBEB;
+    bottom: 0;
+    clear: both;
+    height: 35px;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+}
+
+.footer {
+    font-size: 0.85em;
+    line-height: 0;
+    left: 50%;
+    padding-top: 9px;
+    white-space: nowrap;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer p {
+    color: #999999;
+    max-width: 100%;
+    margin: 0.5em 0 1.5em;
+}
+
+.logos {
+    background-image: url(/static/images/logos.png);
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.logo-ministerio {
+    width: 238px;
+    height: 75px;
+    background-position: -5px -5px;
+}
+
+.logo-provincia {
+    width: 212px;
+    height: 75px;
+    background-position: -5px -90px;
+    float: right;
+}
+.login-box {
+    margin-top: 0 !important;
+}

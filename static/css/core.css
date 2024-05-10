@@ -1,0 +1,143 @@
+/* base.css */
+
+tr.strike td {text-decoration:line-through;}
+tr.unread td {font-weight: bold;}
+
+#notification {display: none;}
+#errors {display: none;}
+#breadcrumb{clear:both;height:1%;overflow:auto;width:100%;margin-top:5px;margin-bottom:5px;padding:1px 0;background:#EFFBEF;}
+#spinner{display: none;position: absolute; z-index:1500; margin: 0 auto; left:50%}
+#tbl{clear:both;width: 100%;}
+
+a.message-counter {
+    padding: 2px 6px 0;
+    margin-left: 1px;
+    border: 1px solid transparent;
+    color: #FFFFFF !important;
+    border-radius: 2px 2px 2px 2px;
+    font-size: 11px;
+    font-weight: bold;
+    height: 27px;
+    line-height: 27px;
+    outline: 0 none;
+    padding: 0 8px;
+    text-align: center;
+}
+
+a.message-unread {
+    background-color: #D14836;
+    background-image: -moz-linear-gradient(center top , #DD4B39, #D14836);
+}
+
+a.message-empty {
+    background: #999999;
+    color: #1f1f1f;
+}
+
+
+a.message-counter:hover {
+    background: #c0c0c0;
+    color: #1f1f1f;
+}
+
+#indicator {
+    background-color: #FFF6BF;
+    border: 1px solid #FF9933;
+    display: none;
+    float: right;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    height: 20px;
+    left: 48%;
+    margin: 0 auto;
+    padding: 5px;
+    position: absolute;
+    text-align: center;
+    top: 0px;
+    width: 80px;
+    z-index: 2000;
+}
+
+#efector_search {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #CECECE;
+    display: none;
+    float: right;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 0 auto 0 auto;
+    padding: 5px;
+    position: absolute;
+    top: 5px;
+    z-index: 2500;
+}
+
+#efector_search .close {
+    color: #6FA5FD;
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 14px;
+    position: absolute;
+    right: 6px;
+    top: 4px;
+}
+
+#efector_search h1 {
+    border-bottom: 1px dotted #D3D3D3;
+    /*color: #6FA5FD;*/
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding-bottom: 2px;
+    text-align: left;
+}
+
+.footer-bar {
+    background-color: #FFFFFF;
+    border-top: 1px solid #EBEBEB;
+    bottom: 0;
+    clear: both;
+    height: 35px;
+    overflow: hidden;
+    position: relative;
+    /*position: fixed;*/
+    /*position: absolute;*/
+    width: 100%;
+    font-size: 0.85em;
+    line-height: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    white-space: nowrap;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer-bar p {
+    color: #999999;
+    max-width: 100%;
+}
+
+#logo {
+    margin: 10px;
+}
+
+.logos {
+    background-image: url(/static/images/logos.png);
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.logo-ministerio {
+    width: 238px;
+    height: 75px;
+    background-position: -5px -5px;
+}
+
+.logo-provincia {
+    width: 212px;
+    height: 75px;
+    background-position: -5px -90px;
+}

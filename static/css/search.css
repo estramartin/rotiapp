@@ -1,0 +1,88 @@
+html{font-size:76%}
+h1,h2,h3,h4,h5,h6,form,fieldset,#nd,.sa,.sn,#su p,.s,.st,.fm,#sr,#km ul{margin:0;padding:0}
+img,fieldset{border:0}
+body,div{font-family:Arial,sans-serif;font-size:1em;color:#000}
+body,.a,a:link,.f,.f:link,.f a:link,a:visited,.f a:visited,a:active,.f a:active{background:#fff}
+a:link{color:#00c}
+a:visited,.f a:visited{color:#551a8b}
+a:active,.f a:active{color:#f00}
+#co{clear:both;padding:3em 0 1em 0;text-align:center;font-size:1.1em;color:#2f2f2f}
+.bt{vertical-align:bottom}
+.z,#sk,#ns span.sp,#n span.sp,#sf h2,#sb h2,#re h3,.rn,#nd span,.sn span{display:none}
+hr{clear:both;width:100%;height:1px;overflow:auto;margin-top:1em}
+#lg a,#lg span{float:left;margin-right:11px;text-indent:-9999px;overflow:hidden;height:100px;width:220px;background:url("../images/logo.jpg") no-repeat}
+#sr{font-size:1.3em}
+#sr span{display:block}
+#nd{padding:4px 0 6px 0;font-size:1.1em}
+#nd a{display:inline;list-style-type:none;margin-right:.75em}
+#nd a:visited,#nd a:link,#nd a:active{color:#00c}
+#sf{float:left;font-size:1.1em;padding-bottom:.5em;margin-bottom:11px}
+#sf form div{float:left;padding-right:6px}
+.sa{font-size:1em}
+.sn{float:left;list-style:none}
+.sn a{display:block;font-size:.75em;padding:0;margin:0;line-height:1.1}
+#su{clear:both;height:1%;overflow:auto;width:100%;margin-bottom:4px;padding:1px 0;background:#e5ecf9;border-top:1px solid #36c}
+#su h2{float:left;font-size:1.5em;padding:0 2px}
+#su p{float:right;font-size:1.1em;line-height:1.5em;padding:0 2px}
+#sw{color:gray;background:#fff}
+#sy,#ss{font-size:1.3em;margin:1em 0;background:#fff}
+#sy{color:#c00}
+#ss{color:#c00}
+div.oneboxResults{max-height:150px;overflow:hidden;font-size:1.35em}
+#er{font-size:1.3em}
+#er p span{display:block}
+#ns{height:1%;overflow:auto;width:100%;clear:both}
+#ns .np a:after{content:">"}
+#ns .pp a:before{content:"<"}
+#nt,#so{font-size:1.1em;padding:0 2px;margin:1px 0;display:inline}
+#nt{float:left}
+#nt a{margin-right:.75em}
+#so{float:right}
+#so strong{font-weight:normal}
+#so a,#so strong{margin-left:.75em}
+#km{margin:1em 0;clear:both;position:relative}
+#km h3{float:right;background:transparent;font-size:1.1em;position:absolute;right:4px;top:4px;color:#25a}
+#km ul{list-style:none}
+#km li{padding:4px;margin-bottom:.5em}
+#km li,#km .l a, #km .a{background:#e8e8ff}
+#km span{display:none}
+#km .l{font-size:1.35em;display:inline}
+#km .a{display:block;color:#008000;margin:0;padding:0;font-size:1.1em}
+#re{clear:both; width: 950px;}
+#re dt,#re dd{margin-left:0}
+#re dd{margin-bottom:1em}
+#re dt.l2,#re dd.l2{margin-left:40px}
+#re .st,#re .a,#re .a:link{color:#008000}
+#re .st,#re .fm{font-size:1.05em}
+#re .ft{font-size:.85em}
+#re .f,#re .f:link,#re .f a:link{color:#77c}
+#re .l{font-size:1.35em;color:#00c}
+#re .s{font-size:1.05em}
+#re .s2,#re .fm{display:block}
+#om{font-size:1.3em}
+#n{padding:1em 0 1.5em 0;font-size:1.15em}
+#n h3,#n p,#n span,#n span a{margin:0;padding:0}
+#n div.co{display:table;margin:0 auto}
+#n h3{font-size:.95em;font-weight:normal;padding-right:.5em;vertical-align:bottom;white-space:nowrap}
+#n p{display:table;text-align:center}
+#n h3,#n span,#n span a,#n span strong{display:table-cell}
+#n span a{color:#000}
+#n span.np a,#n span.pp a{color:#00c}
+#n span.cp strong{color:#a90a08}
+.b,.b a{color:#00c;font-weight:bold}
+#n .ln h3,#n .ln span a,#n .ln span strong,#n .ln span.fp strong,#n .ln span.pp a,#n .ln span.np a,#n .ln span.lp strong{width:auto;padding:0 4px}
+#n .go h3,#n .go span a,#n .go span strong{width:16px}
+#n .go span.fp strong{width:18px}
+#n .go span.pp a{width:68px}
+#n .go span.np a,#n .go span.lp strong{width:100px}
+#n .go span a{background:url("images/nav_page.gif") no-repeat}
+#n .go span.cp strong{background:url("images/nav_current.gif") no-repeat}
+#n .go span.fp strong{background:url("images/nav_first.gif") no-repeat}
+#n .go span.lp strong{background:url("images/nav_last.gif") no-repeat}
+#n .go span.pp a{background:url("images/nav_previous.gif") no-repeat}
+#n .go span.np a{background:url("images/nav_next.gif") no-repeat}
+#n .go h3,#n .go span a,#n .go span strong{padding-top:26px}
+#sb{clear:both;font-size:1.1em;margin:20px 0;padding:25px 6px 35px 6px;text-align:center;background:#e5ecf9;border-top:1px solid #36c;border-bottom:1px solid #36c}
+#sb .sn a{background:transparent}
+#sb fieldset{text-align:left;margin-left:auto;margin-right:auto;display:inline}
+#sb form div{float:left;padding-right:6px}

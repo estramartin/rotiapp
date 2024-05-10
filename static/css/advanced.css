@@ -1,0 +1,23 @@
+html{font-size:76%}
+html,body{color:#000;background:#fff}
+img,fieldset{border:0}
+form,fieldset,dl,dt,dd,h1,h2,h3{margin:0;padding:0}
+body{margin:8px}
+body,div{font-family:Arial,sans-serif;font-size:1em}
+h2,h3,.param,.pair .name{clear:left}
+.value,.name,.param,.pair,#lg a,#lg span{float:left}
+h2{color:#000;background:#e5ecf9;border-top:1px solid #36c;padding:1px 4px;font-size:1.5em}
+h3{font-size:1.3em}
+fieldset,dl{height:1%;overflow:auto}
+fieldset{border:3px; margin-bottom:1.5em}
+dl{line-height:1.75em;font-size:1.1em}
+dt label{margin-left:2px;font-weight:bold}
+.first{color:#000;background:#cbdced}
+.value{width:47%}
+.name{width:38%}
+.param{width:15%}
+.pair{width:85%}
+.pair .name{width:29%}
+.pair .value{width:66%}
+#lg a,#lg span{margin-right:11px;text-indent:-9999px;background:url(/static/images/logo-ministerio.jpg) no-repeat;height:78px;width:auto;overflow:hidden}
+#co{clear:both;padding:3em 0 1em 0;text-align:center;font-size:1.1em;color:#2f2f2f;background:#fff}
