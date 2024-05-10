@@ -49,7 +49,7 @@ POSTGRESQL_DATABASE = env.str('POSTGRESQL_DATABASE')
 if DEBUG:
     GDAL_LIBRARY_PATH = '/usr/lib/libgdal.so.26.0.4'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 
 
 # Application definition
