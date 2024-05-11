@@ -48,8 +48,11 @@ POSTGRESQL_DATABASE = env.str('POSTGRESQL_DATABASE')
 
 if DEBUG:
     GDAL_LIBRARY_PATH = '/usr/lib/libgdal.so.26.0.4'
+else:
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'restonauta.gr', 'www.restonauta.gr']
+
 
 
 # Application definition
