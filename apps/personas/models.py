@@ -11,7 +11,7 @@ class Persona(models.Model):
     fec_nac = models.DateField(null=True, blank=True)
     
     def __str__(self):
-        return self.nombre
+        return f'{self.nombre} {self.apellido}'
     
     @property
     def domicilio(self):

@@ -48,14 +48,11 @@ POSTGRESQL_DATABASE = env.str('POSTGRESQL_DATABASE')
 
 if DEBUG:
     GDAL_LIBRARY_PATH = '/usr/lib/libgdal.so.26.0.4'
+    ALLOWED_HOSTS = ['*']
 else:
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'restonauta.gr', 'www.restonauta.gr']
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'restonauta.gr', 'www.restonauta.gr']
-
-
-
-# Application definition
 
 INSTALLED_APPS = [
     # 'jazzmin',
@@ -93,7 +90,7 @@ INSTALLED_APPS += API_APPS
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
+    'django.middleware.common.CommonMiddleware',    
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',

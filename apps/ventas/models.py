@@ -34,7 +34,7 @@ class VentaDet(models.Model):
     vianda = models.ForeignKey(Vianda, on_delete=models.CASCADE, related_name='ventas_vianda', null=True, blank=True)
     tipo = models.SmallIntegerField(choices=VentaType.choices, default=VentaType.VENTA)
     precio = models.DecimalField(max_digits=18, decimal_places=2, default=0)    
-    cantidad = models.DecimalField(max_digits=18, decimal_places=2)
+    cantidad = models.DecimalField(max_digits=5, decimal_places=3)
     fecha = models.DateTimeField(auto_now_add=True)
     fecha_upd = models.DateTimeField(auto_now=True)
     

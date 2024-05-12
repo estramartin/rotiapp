@@ -24,8 +24,8 @@ class Insumo(models.Model):
 class Stock(models.Model):
     stock_id = models.AutoField(primary_key=True)
     insumo = models.ForeignKey(Insumo, on_delete=models.CASCADE, related_name='stocks')
-    cantidad = models.DecimalField(max_digits=18, decimal_places=2)
-    minimo = models.DecimalField(max_digits=18, decimal_places=2, default=0)
+    cantidad = models.DecimalField(max_digits=5, decimal_places=3)
+    minimo = models.DecimalField(max_digits=5, decimal_places=3, default=0)
     notificar = models.BooleanField(default=False)
     fecha = models.DateField(auto_now_add=True)
     fecha_upd = models.DateField(auto_now=True)
@@ -89,6 +89,7 @@ def handle_updated_instance(instance, pi, stock):
     old_cantidad = getattr(instance, '_old_cantidad', instance.cantidad)
     difference = old_cantidad - instance.cantidad
     stock.cantidad += difference * pi.cantidad
+
 
 @receiver(post_save, sender=VentaVianda)
 @receiver(pre_save, sender=VentaProducto)

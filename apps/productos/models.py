@@ -34,7 +34,7 @@ class ProductoInsumo(models.Model):
     producto_insumo_id = models.AutoField(primary_key=True)
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE, related_name='insumos')
     insumo = models.ForeignKey('insumos.Insumo', on_delete=models.CASCADE, related_name='productos')
-    cantidad = models.DecimalField(max_digits=18, decimal_places=2, blank=False, null=False)    
+    cantidad = models.DecimalField(max_digits=5, decimal_places=3, blank=False, null=False)    
     fecha = models.DateField(auto_now_add=True)
     fecha_upd = models.DateField(auto_now=True)
 

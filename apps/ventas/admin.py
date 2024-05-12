@@ -39,7 +39,7 @@ class VentaViandaInline(admin.TabularInline):
 class VentaAdmin(admin.ModelAdmin):
     inlines = [VentaPromocionInline, VentaProductoInline, VentaViandaInline]
     exclude = ('user',)
-    list_display = ['venta_id', 'persona', 'fecha', 'total', 'es_promocion']
+    list_display = ['venta_id', 'get_persona_nombre', 'fecha', 'total', 'es_promocion']
     readonly_fields = ['total']
     list_filter = ['fecha', 'activo']
     search_fields = ['venta_id']    
@@ -50,6 +50,10 @@ class VentaAdmin(admin.ModelAdmin):
         return obj.detalles.filter(tipo=2).exists()
     es_promocion.boolean = True
     es_promocion.short_description = 'Es promoción'
+
+    def get_persona_nombre(self, obj):
+        return f'{obj.persona.nombre} {obj.persona.apellido}'
+    get_persona_nombre.short_description = 'Persona'
 
 
     def save_model(self, request, obj, form, change):
