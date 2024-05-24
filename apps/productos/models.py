@@ -92,8 +92,8 @@ class Promocion(models.Model):
         return self.nombre
     
     class Meta:
-        verbose_name = 'Promoción'
-        verbose_name_plural = 'Promociones'
+        verbose_name = 'Promoción unica'
+        verbose_name_plural = 'Promociones varias'
     
 
 class PromocionProducto(models.Model):
