@@ -10,13 +10,17 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest    
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node: [14, 16, 20]
+    runs-on: ${{ matrix.os }}
 
     steps:
-    - name: Set up Node.js 20
+    - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '20'
+        node-version: ${{ matrix.node }}
 
     - name: Checkout code
       uses: actions/checkout@v3
@@ -36,6 +40,7 @@ jobs:
         python manage.py test
 
     - name: Deploy to Hostinger
+      if: success()
       env:
         SSH_PRIVATE_KEY: ${{ secrets.HOSTINGER_SSH_KEY }}
         HOST: ${{ secrets.HOSTINGER_SERVER_IP }}
@@ -46,9 +51,10 @@ jobs:
         echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan -H $HOST >> ~/.ssh/known_hosts
-        
+
         ssh $USER@$HOST <<EOF
           cd $APP_DIR
+          git config --global --add safe.directory $APP_DIR
           git pull origin master
           pyenv activate rotiapp
           pip install -r requirements.txt
