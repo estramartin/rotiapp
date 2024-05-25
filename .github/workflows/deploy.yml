@@ -12,8 +12,8 @@ jobs:
   build-and-deploy:
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        node: [14, 16, 20]
+        os: [ubuntu-latest, windows-latest]
+        node: [16, 20]
     runs-on: ${{ matrix.os }}
 
     steps:
