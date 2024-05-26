@@ -259,6 +259,10 @@ LOGGING = {
         },
     },
     'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+        },
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
@@ -268,9 +272,20 @@ LOGGING = {
     },
     'loggers': {
         'django': {
-            'handlers': ['file'],
+            'handlers': ['file' if 'GITHUB_ACTIONS' not in os.environ else 'console'],
             'level': 'DEBUG',
             'propagate': True,
         },
     },
 }
+
+if 'GITHUB_ACTIONS' in os.environ:
+    LOGGING['handlers']['console'] = {
+        'class': 'logging.StreamHandler',
+        'formatter': 'simple',
+    }
+    LOGGING['loggers']['django'] = {
+        'handlers': ['console'],
+        'level': 'DEBUG',
+        'propagate': True,
+    }
