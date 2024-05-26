@@ -244,48 +244,33 @@ CELERY_RESULT_SERIALIZER = 'pickle'
 
 VENTA_MSG_TIMEOUT = 10
 
-
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'verbose': {
-            'format': '{levelname} {asctime} {module} {message}',
-            'style': '{',
+if not 'GITHUB_ACTIONS' in os.environ:
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'formatters': {
+            'verbose': {
+                'format': '{levelname} {asctime} {module} {message}',
+                'style': '{',
+            },
+            'simple': {
+                'format': '{levelname} {message}',
+                'style': '{',
+            },
         },
-        'simple': {
-            'format': '{levelname} {message}',
-            'style': '{',
+        'handlers': {
+            'file': {
+                'level': 'DEBUG',
+                'class': 'logging.FileHandler',
+                'filename': '/opt/rotiapp/debug.log',
+                'formatter': 'verbose',
+            },
         },
-    },
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-            'formatter': 'simple',
+        'loggers': {
+            'django': {
+                'handlers': ['file'],
+                'level': 'DEBUG',
+                'propagate': True,
+            },
         },
-        'file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': '/opt/rotiapp/debug.log',
-            'formatter': 'verbose',
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['file' if 'GITHUB_ACTIONS' not in os.environ else 'console'],
-            'level': 'DEBUG',
-            'propagate': True,
-        },
-    },
-}
-
-if 'GITHUB_ACTIONS' in os.environ:
-    LOGGING['handlers']['console'] = {
-        'class': 'logging.StreamHandler',
-        'formatter': 'simple',
-    }
-    LOGGING['loggers']['django'] = {
-        'handlers': ['console'],
-        'level': 'DEBUG',
-        'propagate': True,
     }
