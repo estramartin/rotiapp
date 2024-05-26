@@ -38,7 +38,11 @@ jobs:
     - name: Run tests
       env:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
-        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        POSTGRESQL_HOST: ${{ secrets.POSTGRESQL_HOST }}
+        POSTGRESQL_PASSWORD: ${{ secrets.POSTGRESQL_PASSWORD }}
+        POSTGRESQL_USER: ${{ secrets.POSTGRESQL_USER }}
+        POSTGRESQL_DATABASE: ${{ secrets.POSTGRESQL_DATABASE }}
+        POSTGRESQL_PORT: ${{ secrets.POSTGRESQL_PORT }}
         DEBUG: 'False'
       run: |
         python manage.py test
