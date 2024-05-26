@@ -30,6 +30,15 @@ jobs:
       with:
         python-version: '3.12.1'
 
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y gdal-bin libgdal-dev
+
+    - name: Verify GDAL version
+      run: |
+        gdalinfo --version
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -52,7 +61,7 @@ jobs:
         EMAIL_USE_TLS: ${{ secrets.EMAIL_USE_TLS }}
         DEBUG: 'False'
         GITHUB_ACTIONS: 'true'
-        GDAL_LIBRARY_PATH: /usr/lib/libgdal.so.26.0.4
+        GDAL_LIBRARY_PATH:  /usr/lib/libgdal.so
 
 
       run: |
