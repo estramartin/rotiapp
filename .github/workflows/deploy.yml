@@ -65,7 +65,7 @@ jobs:
 
 
       run: |
-        python manage.py test apps.empleados.tests
+        python manage.py test
 
     - name: Debug SSH Key
       run: |
