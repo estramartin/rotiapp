@@ -1,3 +1,4 @@
+from datetime import date
 from django.test import TestCase
 from .models import EmpleadoCategoria, Empleado, Categoria
 from apps.core.models import DocTipo
@@ -11,9 +12,9 @@ class EmpleadoCategoriaTest(TestCase):
                                             nombre='Juan',
                                             apellido='Perez',
                                             nro_doc='32831554',
-                                            fec_nac='1987-02-21',
+                                            fec_nac=date(1987,2,21),
                                             tipo_doc=doctipo,
-                                            fecha_ingreso='2020-02-02',
+                                            fecha_ingreso=date(2020, 2, 2),
                                             activo=True
                                             )
         self.empleado_categoria = EmpleadoCategoria.objects.create(empleado=self.empleado, categoria=self.categoria)
