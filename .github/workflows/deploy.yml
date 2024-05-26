@@ -46,7 +46,7 @@ jobs:
     - name: Deploy to Hostinger
       if: success()
       env:
-        SSH_PRIVATE_KEY: ${{ secrets.HOSTINGER_SSH_KEY }}
+        SSH_PRIVATE_KEY: ${{ secrets.HOSTINGER_KEY }}
         HOST: ${{ secrets.HOSTINGER_SERVER_IP }}
         USER: ${{ secrets.HOSTINGER_SSH_USER }}
         APP_DIR: /opt/rotiapp
@@ -55,7 +55,7 @@ jobs:
         DEBUG: 'False'
       run: |
         mkdir -p ~/.ssh
-        echo "${{ secrets.HOSTINGER_SSH_KEY }}" > ~/.ssh/id_rsa
+        echo "${{ secrets.HOSTINGER_KEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan -H ${{ secrets.HOSTINGER_SERVER_IP }} >> ~/.ssh/known_hosts
 
