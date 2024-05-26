@@ -43,24 +43,29 @@ jobs:
     #   run: |
     #     python manage.py test
 
-  - name: Deploy to Hostinger
-    run: |
-      mkdir -p ~/.ssh
-      echo "${{ secrets.HOSTINGER_KEY }}" > ~/.ssh/id_rsa
-      chmod 600 ~/.ssh/id_rsa
-      ssh-keyscan -H ${{ secrets.HOSTINGER_SERVER_IP }} >> ~/.ssh/known_hosts
-      
-      # Intentar una conexión SSH simple para verificar la autenticación
-      ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ${{ secrets.HOSTINGER_SSH_USER }}@${{ secrets.HOSTINGER_SERVER_IP }} "echo 'SSH connection successful'"
-      
-      # Continuar con el despliegue si la conexión SSH es exitosa
-      ssh -i ~/.ssh/id_rsa ${{ secrets.HOSTINGER_SSH_USER }}@${{ secrets.HOSTINGER_SERVER_IP }} <<EOF
-        cd $APP_DIR
-        git config --global --add safe.directory $APP_DIR
-        git pull origin master
-        pyenv activate rotiapp
-        pip install -r requirements.txt
-        python manage.py migrate
-        python manage.py collectstatic --noinput
-        sudo supervisorctl restart rotiapp:
-      EOF
+    - name: Deploy to Hostinger
+      if: success()
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.HOSTINGER_KEY }}
+        HOST: ${{ secrets.HOSTINGER_SERVER_IP }}
+        USER: ${{ secrets.HOSTINGER_SSH_USER }}
+        APP_DIR: /opt/rotiapp
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        DEBUG: 'False'
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.HOSTINGER_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan -H ${{ secrets.HOSTINGER_SERVER_IP }} >> ~/.ssh/known_hosts
+
+        ssh -i ~/.ssh/id_rsa ${{ secrets.HOSTINGER_SSH_USER }}@${{ secrets.HOSTINGER_SERVER_IP }} <<EOF
+          cd $APP_DIR
+          git config --global --add safe.directory $APP_DIR
+          git pull origin master
+          pyenv activate rotiapp
+          pip install -r requirements.txt
+          python manage.py migrate
+          python manage.py collectstatic --noinput
+          sudo supervisorctl restart rotiapp:
+        EOF
