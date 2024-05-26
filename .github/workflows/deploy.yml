@@ -43,6 +43,14 @@ jobs:
         POSTGRESQL_USER: ${{ secrets.POSTGRESQL_USER }}
         POSTGRESQL_DATABASE: ${{ secrets.POSTGRESQL_DATABASE }}
         POSTGRESQL_PORT: ${{ secrets.POSTGRESQL_PORT }}
+        DEFAULT_FROM_EMAIL: ${{ secrets.DEFAULT_FROM_EMAIL }}
+        EMAIL_BACKEND: ${{ secrets.EMAIL_BACKEND }}
+        EMAIL_HOST: ${{ secrets.EMAIL_HOST }}
+        EMAIL_PORT: ${{ secrets.EMAIL_PORT }}
+        EMAIL_HOST_USER: ${{ secrets.EMAIL_HOST_USER }}
+        EMAIL_HOST_PASSWORD: ${{ secrets.EMAIL_HOST_PASSWORD }}
+        EMAIL_USE_TLS: ${{ secrets.EMAIL_USE_TLS }}
+
         DEBUG: 'False'
       run: |
         python manage.py test
