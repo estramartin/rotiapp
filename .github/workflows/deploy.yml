@@ -43,6 +43,14 @@ jobs:
     #   run: |
     #     python manage.py test
 
+    - name: Debug SSH Key
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.HOSTINGER_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        echo "SSH Key Content:"
+        cat ~/.ssh/id_rsa
+
     - name: Deploy to Hostinger
       if: success()
       env:
@@ -59,7 +67,11 @@ jobs:
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan -H ${{ secrets.HOSTINGER_SERVER_IP }} >> ~/.ssh/known_hosts
 
-        ssh -i ~/.ssh/id_rsa ${{ secrets.HOSTINGER_SSH_USER }}@${{ secrets.HOSTINGER_SERVER_IP }} <<EOF
+        # Intentar una conexión SSH simple para verificar la autenticación
+        ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -t ${{ secrets.HOSTINGER_SSH_USER }}@${{ secrets.HOSTINGER_SERVER_IP }} "echo 'SSH connection successful'"
+
+        # Continuar con el despliegue si la conexión SSH es exitosa
+        ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -t ${{ secrets.HOSTINGER_SSH_USER }}@${{ secrets.HOSTINGER_SERVER_IP }} <<EOF
           cd $APP_DIR
           git config --global --add safe.directory $APP_DIR
           git pull origin master
