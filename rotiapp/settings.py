@@ -53,6 +53,8 @@ else:
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'restonauta.gr', 'www.restonauta.gr']
 
+BASE_URL = env.str('BASE_URL')
+MERCADOPAGO_ACCESS_TOKEN = env.str('MERCADOPAGO_ACCESS_TOKEN')
 
 INSTALLED_APPS = [
     # 'jazzmin',
@@ -65,7 +67,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'drf_yasg',
-
+    
     'compressor',
     'celery',
     'dal',
@@ -83,6 +85,7 @@ API_APPS = [
     'apps.proveedores',
     'apps.agendas',
     'apps.clientes',
+    'apps.pagos',
 ]
 
 INSTALLED_APPS += API_APPS

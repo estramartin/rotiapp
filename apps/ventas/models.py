@@ -1,5 +1,13 @@
+import uuid
+import qrcode
+import mercadopago
+
+from io import BytesIO
+from django.utils.safestring import mark_safe
+from django.core.files import File
 from django.db import models
 from django.db.models import IntegerChoices
+from django.conf import settings
 
 from apps.personas.models import Persona
 from apps.productos.models import Producto, Promocion, Vianda
@@ -15,10 +23,42 @@ class Venta(models.Model):
     total = models.DecimalField(max_digits=18, decimal_places=2, default=0)
     activo = models.BooleanField(default=True)
     user = models.ForeignKey('auth.User', on_delete=models.PROTECT, related_name='ventas')
+    code = models.UUIDField(default=uuid.uuid4, unique=True)
+    qr_code = models.ImageField(upload_to='qr_codes', blank=True)
 
     def __str__(self):
         return str(self.venta_id)   
 
+    def save(self, *args, **kwargs):
+        if not self.qr_code:
+            sdk = mercadopago.SDK(settings.MERCADOPAGO_ACCESS_TOKEN)
+            preference_data = {
+                "items": [
+                    {
+                        "title": "Nombre del producto o servicio",
+                        "quantity": 1,
+                        "unit_price": round(float(1000.00), 2),  # Asegúrate de tener un precio en tu modelo Venta
+                    }
+                ]
+            }
+            preference_response = sdk.preference().create(preference_data)
+            url = preference_response['response']['init_point']
+            print(url)
+            # url = f"{settings.BASE_URL}/api/v1/ventaqr/{self.code}/process"
+            qr = qrcode.make(url)
+            buffer = BytesIO()
+            qr.save(buffer, format="PNG")
+            file_name = f"{self.code}.png"
+            self.qr_code.save(file_name, File(buffer), save=False)
+            super().save(*args, **kwargs)
+
+    def qr_code_tag(self):
+        if self.qr_code:           
+            return mark_safe(f'<img src="{self.qr_code.url}" width="150" height="150" />')
+        return "No QR code available"
+
+    qr_code_tag.short_description = 'QR Code'
+    qr_code_tag.allow_tags = True
 
 class VentaDet(models.Model):
     
