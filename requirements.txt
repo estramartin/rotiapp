@@ -42,3 +42,4 @@ vine==5.1.0
 wcwidth==0.2.13
 mercadopago==2.2.3
 qrcode==7.4.2
+pillow==10.4.0
