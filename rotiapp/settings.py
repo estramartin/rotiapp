@@ -158,7 +158,10 @@ AUTH_PASSWORD_VALIDATORS = [
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+    ),
+     'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.JSONParser',
+    ]
 }
 
 
@@ -268,6 +271,14 @@ if not 'GITHUB_ACTIONS' in os.environ:
                 'filename': '/opt/rotiapp/debug.log',
                 'formatter': 'verbose',
             },
+            'info': {
+            'level': 'INFO',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'maxBytes': 1024 * 1024 * 5,  # 5 MB,
+            'filename': '../logs/webhook.log',
+            'backupCount': 5,
+            'formatter': 'verbose',
+            },
         },
         'loggers': {
             'django': {
@@ -275,5 +286,14 @@ if not 'GITHUB_ACTIONS' in os.environ:
                 'level': 'DEBUG',
                 'propagate': True,
             },
+            'info': {
+            'level': 'INFO',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'maxBytes': 1024 * 1024 * 5,  # 5 MB,
+            'filename': '../logs/webhook.log',
+            'backupCount': 5,
+            'formatter': 'verbose',
         },
+        },
+        
     }

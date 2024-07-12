@@ -10,6 +10,7 @@ class PagoViewSet(viewsets.ViewSet):
     permission_classes = [AllowAny]
     @action(detail=False, methods=['post'])
     def webhook(self, request):
+        logger.error(f'Webhook received. {request.data}')
         logger.info(f'Webhook received. {request.data}')
         return Response({'status': 'ok'})
     
