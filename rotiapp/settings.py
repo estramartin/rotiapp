@@ -286,14 +286,11 @@ if not 'GITHUB_ACTIONS' in os.environ:
                 'level': 'DEBUG',
                 'propagate': True,
             },
-            'info': {
-            'level': 'INFO',
-            'class': 'logging.handlers.RotatingFileHandler',
-            'maxBytes': 1024 * 1024 * 5,  # 5 MB,
-            'filename': '../logs/webhook.log',
-            'backupCount': 5,
-            'formatter': 'verbose',
-        },
+            'django.info': {  
+                'handlers': ['info'], 
+                'level': 'INFO',
+                'propagate': False,  
+            },
         },
         
     }
