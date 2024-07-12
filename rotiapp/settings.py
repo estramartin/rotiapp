@@ -272,12 +272,10 @@ if not 'GITHUB_ACTIONS' in os.environ:
                 'formatter': 'verbose',
             },
             'info': {
-            'level': 'INFO',
-            'class': 'logging.handlers.RotatingFileHandler',
-            'maxBytes': 1024 * 1024 * 5,  # 5 MB,
-            'filename': '../logs/webhook.log',
-            'backupCount': 5,
-            'formatter': 'verbose',
+                'level': 'INFO',
+                'class': 'logging.FileHandler',
+                'filename': '../logs/api.log',
+                'formatter': 'verbose',
             },
         },
         'loggers': {
