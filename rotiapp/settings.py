@@ -274,7 +274,7 @@ if not 'GITHUB_ACTIONS' in os.environ:
             'info': {
                 'level': 'INFO',
                 'class': 'logging.FileHandler',
-                'filename': '../logs/api.log',
+                'filename': '/opt/rotiapp/logs/api.log',
                 'formatter': 'verbose',
             },
         },
@@ -287,6 +287,7 @@ if not 'GITHUB_ACTIONS' in os.environ:
             'django.info': {  
                 'handlers': ['info'], 
                 'level': 'INFO',
+                'filename': '/opt/rotiapp/logs/api.log',
                 'propagate': False,  
             },
         },
