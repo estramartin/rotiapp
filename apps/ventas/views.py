@@ -1,4 +1,5 @@
 import requests
+import logging
 
 from django.shortcuts import render
 from rest_framework.decorators import action
@@ -7,6 +8,8 @@ from rest_framework.response import Response
 from rest_framework. permissions import AllowAny
 from .models import Venta
 # Create your views here.
+
+logger = logging.getLogger(__name__)
 
 class VentaQRViewSet(viewsets.ViewSet):
     permission_classes = [AllowAny]
@@ -38,7 +41,7 @@ from ipware import get_client_ip
 def get_client_ip_address(request):
     print(request.META)
     client_ip, is_routable = get_client_ip(request)
-    print(client_ip, is_routable)
+    logger.info(f"client_ip {client_ip}, is_routable {is_routable}")
     if client_ip is None:
         return None
     if is_routable:
